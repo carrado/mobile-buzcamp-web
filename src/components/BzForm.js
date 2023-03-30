@@ -5,7 +5,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import Select from "react-select";
-import InputValidator from "../services/validationSchema";
+import InputValidator from "@/services/validationSchema";
 
 export function InputText({
     className,
@@ -153,9 +153,9 @@ export function InputSelect({ options, className, variant, placeholder, vModel, 
 
 
 export function DateSelect({ className, vModel }) {
-    const [value, setValue] = useState('');
-
     const currentYear = new Date().getFullYear();
+
+    const [value, setValue] = useState(`${dayjs(`12 - 31 - ${ currentYear }`).subtract(17, "years")}`);
 
     const getSelected = (value) => {
         setValue(value);
@@ -180,6 +180,7 @@ export function DateSelect({ className, vModel }) {
                     value={value}
                     onChange={(newValue) => getSelected(newValue)}
                     required
+                    style={{width: '100%'}}
                 />
             </LocalizationProvider>
         </div>
@@ -197,7 +198,7 @@ export function InputRadio({ className, variant, icon, options, vModel, inputVal
             className={`${className} ${variant ? "bz-input-border" : ""} bz-flex`}
         >
             {icon && (
-                <div className="bz-px-3 bz-pt-5">
+                <div className="bz-px-3 bz-py-5">
                     <Image src={`/icons/${icon}.svg`} width={15} height={15} alt={icon} />
                 </div>
             )}
