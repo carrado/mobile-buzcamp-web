@@ -1,7 +1,7 @@
-import Head from "next/dist/shared/lib/head";
-import BzLink from "../../components/BzLink";
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
+import Head from "next/head";
+import BzLink from "../components/BzLink";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 export default function Mobile() {
   return (
